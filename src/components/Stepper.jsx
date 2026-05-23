@@ -39,7 +39,7 @@ export function Stepper({ current, completed }) {
                     </svg>
                   ) : i + 1}
                 </div>
-                <span style={{ fontSize: 15, fontWeight: isActive ? 600 : 500, whiteSpace: 'nowrap' }}>{step.label}</span>
+                <span style={{ fontSize: 16, fontWeight: isActive ? 600 : 500, whiteSpace: 'nowrap' }}>{step.label}</span>
               </div>
               {i < STEPS.length - 1 && (
                 <div style={{ width: 1, height: 18, background: 'var(--border)', margin: '0 4px', flexShrink: 0 }} />

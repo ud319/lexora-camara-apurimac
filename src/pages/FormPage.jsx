@@ -151,9 +151,9 @@ export default function FormPage() {
       <header style={{ background: 'var(--lblue)', color: '#fff', height: 54, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 1.5rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-          <span style={{ fontSize: 14, fontWeight: 700 }}>Nueva Solicitud</span>
+          <span style={{ fontSize: 14, fontWeight:'bold' }}>Nueva Solicitud</span>
         </div>
-        <Link to="/dashboard" style={{ fontSize: 12, color: 'rgba(255,255,255,.8)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 5 }}>
+        <Link to="/dashboard" style={{ fontSize: 16, color: 'rgba(255,255,255,.8)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 5 }}>
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
           Mis expedientes
         </Link>

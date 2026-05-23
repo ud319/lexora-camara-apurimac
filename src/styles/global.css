@@ -14,6 +14,7 @@
   --lblue:      #009DFF;
   --lblue-hover:#1485CC;
   --blue-dark:  #0E2657;
+  --gold:       #fecc20;
 
   --bg:         #f6f6f7;
   --surface:    #ffffff;
@@ -53,3 +54,8 @@ input, select, textarea { font-family: var(--font); }
 ::-webkit-scrollbar-thumb { background: var(--border-2); border-radius: 99px; }
 
 ::selection { background: rgba(196,30,58,.12); }
+
+.nav-link:hover > span { 
+  color: var(--gold);
+  font-weight: 600;
+ }

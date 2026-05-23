@@ -69,22 +69,24 @@ export default function DashboardCliente() {
       <MainHeader />
       {/* Header */}
       <header style={{ background: 'var(--lblue)', color: '#fff', height: 58, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 1.5rem', boxShadow: '0 2px 12px rgba(196,30,58,.25)' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-            <polyline points="14 2 14 8 20 8" />
-          </svg>
-          <span style={{ fontSize: 15, fontWeight: 700 }}>Mesa de Partes Virtual</span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 15 }}>
+          <Link className="nav-link" to="/dashboard" style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none', color: '#fff' }} >
+            <span style={{ fontSize: 14, fontWeight: 700 }}>Mi cuenta</span>
+          </Link>
+          <Link className="nav-link" href="https://www.camara-apurimac.com.pe" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none', color: '#fff' }} >
+            <span style={{ fontSize: 14, fontWeight: 700 }}>Guía de usuario</span>
+          </Link>
         </div>
+
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
           <div style={{ textAlign: 'right' }}>
-            <p style={{ fontSize: 13, fontWeight: 600 }}>{cliente?.nombres}</p>
-            <p style={{ fontSize: 11, opacity: .75 }}>{cliente?.tipo_doc} {cliente?.documento}</p>
+            <p style={{ fontSize: 14, fontWeight: 600, textTransform: 'uppercase' }}>{cliente?.nombres}</p>
+            <p style={{ fontSize: 12, opacity: .75 }}>{cliente?.tipo_doc} {cliente?.documento}</p>
           </div>
-          <Link to="/perfil" style={{ background: 'rgba(255,255,255,.15)', border: '1px solid rgba(255,255,255,.3)', color: '#fff', padding: '5px 12px', borderRadius: 6, fontSize: 12, textDecoration: 'none' }}>
+          <Link to="/perfil" style={{ background: 'rgba(255,255,255,.15)', border: '1px solid rgba(255,255,255,.3)', color: '#fff', padding: '5px 12px', borderRadius: 6, fontSize: 14, textDecoration: 'none' }}>
             Editar perfil
           </Link>
-          <button onClick={logout} style={{ background: 'rgba(255,255,255,.15)', border: '1px solid rgba(255,255,255,.3)', color: '#fff', padding: '5px 12px', borderRadius: 6, fontSize: 12, cursor: 'pointer' }}>
+          <button onClick={logout} style={{ background: 'rgba(255,255,255,.15)', border: '1px solid rgba(255,255,255,.3)', color: '#fff', padding: '5px 12px', borderRadius: 6, fontSize: 14, cursor: 'pointer' }}>
             Salir
           </button>
         </div>

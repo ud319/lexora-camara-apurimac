@@ -3,7 +3,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
 import { Button, Input, Card } from '../../components/ui'
 import { toast } from '../../components/ui'
-
+import logo_cca from '../../assets/img/Logo-cca.png'
+import { MainHeader } from '../../components/MainHeader'
 export default function LoginCliente() {
   const { loginCliente } = useAuth()
   const navigate = useNavigate()
@@ -31,16 +32,15 @@ export default function LoginCliente() {
   }
 
   return (
-    <div style={{ minHeight: '100vh', background: 'var(--bg)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '1rem' }}>
+    <>
+      <MainHeader />
 
+    <div style={{ minHeight: '100vh', background: 'var(--bg)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '1rem' }}>
       {/* Logo */}
+    
       <div style={{ textAlign: 'center', marginBottom: 28 }}>
-        <div style={{ width: 52, height: 52, background: 'var(--lblue)', borderRadius: 14, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 12px' }}>
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-            <polyline points="14 2 14 8 20 8" />
-            <line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" />
-          </svg>
+        <div style={{ width: 92, height: 92, borderRadius: 14, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 12px' }}>
+          <img src={logo_cca} alt="Logo" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
         </div>
         <h1 style={{ fontSize: 20, fontWeight: 700 }}>CEAR – APURÍMAC </h1>
         <h2 style={{ fontSize: 16, fontWeight: 500, marginTop: 4 }}>Para presentar solicitudes y/o realizar seguimiento de expediente.</h2>
@@ -95,5 +95,6 @@ export default function LoginCliente() {
         </Link>
       </div>
     </div>
+        </>
   )
 }
