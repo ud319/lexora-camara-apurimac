@@ -8,7 +8,7 @@ export function Layout({ children }) {
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       {/* Header */}
       <header style={{
-        background: 'var(--red)',
+        background: 'var(--lblue)',
         color: '#fff',
         height: 58,
         display: 'flex',

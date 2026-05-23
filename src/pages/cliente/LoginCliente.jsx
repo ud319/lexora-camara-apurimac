@@ -35,15 +35,15 @@ export default function LoginCliente() {
 
       {/* Logo */}
       <div style={{ textAlign: 'center', marginBottom: 28 }}>
-        <div style={{ width: 52, height: 52, background: 'var(--red)', borderRadius: 14, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 12px' }}>
+        <div style={{ width: 52, height: 52, background: 'var(--lblue)', borderRadius: 14, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 12px' }}>
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round">
             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
             <polyline points="14 2 14 8 20 8" />
             <line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" />
           </svg>
         </div>
-        <h1 style={{ fontSize: 20, fontWeight: 700 }}>Lexora – Plataforma de Expedientes Legales </h1>
-        <h2 style={{ fontSize: 16, fontWeight: 500, marginTop: 4 }}>Cámara de Comercio Apurímac</h2>
+        <h1 style={{ fontSize: 20, fontWeight: 700 }}>CEAR – APURÍMAC </h1>
+        <h2 style={{ fontSize: 16, fontWeight: 500, marginTop: 4 }}>Para presentar solicitudes y/o realizar seguimiento de expediente.</h2>
         <p style={{ fontSize: 12, fontWeight: 'normal', marginTop: 4, color: 'blue' }}>
           <a style={{ textDecoration: 'none'}} href="https://www.camara-apurimac.com.pe" target="_blank" rel="noopener noreferrer">camara-apurimac.com.pe</a>
         </p>
@@ -77,12 +77,12 @@ export default function LoginCliente() {
         </form>
 
         <div style={{ marginTop: 20, paddingTop: 16, borderTop: '1px solid var(--border)', display: 'flex', flexDirection: 'column', gap: 10, alignItems: 'center' }}>
-          <Link to="/olvide-password" style={{ fontSize: 13, color: 'var(--red)', textDecoration: 'none', fontWeight: 500 }}>
+          <Link to="/olvide-password" style={{ fontSize: 13, color: 'var(--lblue)', textDecoration: 'none', fontWeight: 500 }}>
             ¿Olvidaste tu contraseña?
           </Link>
           <p style={{ fontSize: 13, color: 'var(--text-3)' }}>
             ¿No tienes cuenta?{' '}
-            <Link to="/registro" style={{ color: 'var(--red)', fontWeight: 600, textDecoration: 'none' }}>
+            <Link to="/registro" style={{ color: 'var(--lblue)', fontWeight: 600, textDecoration: 'none' }}>
               Regístrate aquí
             </Link>
           </p>

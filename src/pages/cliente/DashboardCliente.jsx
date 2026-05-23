@@ -6,6 +6,8 @@ import { Badge, Card, Button, Spinner } from '../../components/ui'
 import { toast } from '../../components/ui'
 import { format } from 'date-fns'
 import { es } from 'date-fns/locale'
+import logocca from '../../assets/img/Logo-cca.png'
+import { MainHeader } from '../../components/MainHeader'
 
 const ESTADO_COLORS = { pendiente: 'amber', en_revision: 'blue', atendido: 'green', rechazado: 'red' }
 const ESTADO_LABELS = { pendiente: 'Pendiente', en_revision: 'En revisión', atendido: 'Atendido', rechazado: 'Rechazado' }
@@ -14,10 +16,10 @@ export default function DashboardCliente() {
   const { cliente, logoutCliente } = useAuth()
   const navigate = useNavigate()
   const [expedientes, setExpedientes] = useState([])
-  const [loading,     setLoading]     = useState(true)
-  const [selected,    setSelected]    = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [selected, setSelected] = useState(null)
   const [loadingUrls, setLoadingUrls] = useState(false)
-  const [fileUrls,    setFileUrls]    = useState([])
+  const [fileUrls, setFileUrls] = useState([])
 
   useEffect(() => {
     if (!cliente) { navigate('/login'); return }
@@ -55,22 +57,22 @@ export default function DashboardCliente() {
   function logout() { logoutCliente(); navigate('/login') }
 
   const stats = {
-    total:       expedientes.length,
-    pendiente:   expedientes.filter(e => e.estado === 'pendiente').length,
+    total: expedientes.length,
+    pendiente: expedientes.filter(e => e.estado === 'pendiente').length,
     en_revision: expedientes.filter(e => e.estado === 'en_revision').length,
-    atendido:    expedientes.filter(e => e.estado === 'atendido').length,
-    rechazado:   expedientes.filter(e => e.estado === 'rechazado').length,
+    atendido: expedientes.filter(e => e.estado === 'atendido').length,
+    rechazado: expedientes.filter(e => e.estado === 'rechazado').length,
   }
 
   return (
     <div style={{ minHeight: '100vh', background: 'var(--bg)' }}>
-
+      <MainHeader />
       {/* Header */}
-      <header style={{ background: 'var(--red)', color: '#fff', height: 58, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 1.5rem', boxShadow: '0 2px 12px rgba(196,30,58,.25)' }}>
+      <header style={{ background: 'var(--lblue)', color: '#fff', height: 58, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 1.5rem', boxShadow: '0 2px 12px rgba(196,30,58,.25)' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-            <polyline points="14 2 14 8 20 8"/>
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+            <polyline points="14 2 14 8 20 8" />
           </svg>
           <span style={{ fontSize: 15, fontWeight: 700 }}>Mesa de Partes Virtual</span>
         </div>
@@ -98,7 +100,7 @@ export default function DashboardCliente() {
           </div>
           <Link to="/nueva-solicitud" style={{ textDecoration: 'none' }}>
             <Button>
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
               Nueva solicitud
             </Button>
           </Link>
@@ -107,11 +109,11 @@ export default function DashboardCliente() {
         {/* Stats */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 10, marginBottom: 20 }}>
           {[
-            { label: 'Total',       value: stats.total,       color: 'var(--text)' },
-            { label: 'Pendientes',  value: stats.pendiente,   color: 'var(--amber)' },
+            { label: 'Total', value: stats.total, color: 'var(--text)' },
+            { label: 'Pendientes', value: stats.pendiente, color: 'var(--amber)' },
             { label: 'En revisión', value: stats.en_revision, color: 'var(--blue)' },
-            { label: 'Atendidos',   value: stats.atendido,    color: 'var(--green)' },
-            { label: 'Rechazados',  value: stats.rechazado,   color: 'var(--red)' },
+            { label: 'Atendidos', value: stats.atendido, color: 'var(--green)' },
+            { label: 'Rechazados', value: stats.rechazado, color: 'var(--red)' },
           ].map(s => (
             <Card key={s.label} style={{ padding: '12px 14px' }}>
               <p style={{ fontSize: 10, fontWeight: 600, color: 'var(--text-3)', textTransform: 'uppercase', letterSpacing: '.04em', marginBottom: 4 }}>{s.label}</p>
@@ -128,7 +130,7 @@ export default function DashboardCliente() {
               <div style={{ display: 'flex', justifyContent: 'center', padding: '3rem' }}><Spinner size={28} /></div>
             ) : expedientes.length === 0 ? (
               <div style={{ textAlign: 'center', padding: '3rem', color: 'var(--text-3)' }}>
-                <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ marginBottom: 12 }}><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ marginBottom: 12 }}><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /></svg>
                 <p style={{ fontSize: 14, marginBottom: 12 }}>Aún no tiene expedientes registrados</p>
                 <Link to="/nueva-solicitud" style={{ textDecoration: 'none' }}>
                   <Button>Enviar primera solicitud</Button>
@@ -191,9 +193,9 @@ export default function DashboardCliente() {
               )}
 
               <Sep label="Demandado" />
-              <Row label="Nombre"    value={selected.ddo_nombres} />
+              <Row label="Nombre" value={selected.ddo_nombres} />
               <Row label="Documento" value={`${selected.ddo_tipo_doc} ${selected.ddo_num_doc}`} />
-              <Row label="Celular"   value={selected.ddo_celular} />
+              <Row label="Celular" value={selected.ddo_celular} />
 
               <Sep label="Registro" />
               <Row label="Fecha" value={selected.created_at ? format(new Date(selected.created_at), "dd/MM/yyyy 'a las' HH:mm", { locale: es }) : '—'} />
@@ -208,9 +210,9 @@ export default function DashboardCliente() {
                     fileUrls.map((url, i) => (
                       <a key={i} href={url} target="_blank" rel="noreferrer"
                         style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '8px 10px', marginBottom: 6, background: 'var(--blue-light)', border: '1px solid #bfdbfe', borderRadius: 'var(--radius)', textDecoration: 'none', color: 'var(--blue)', fontSize: 12, fontWeight: 500 }}>
-                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /></svg>
                         Documento {i + 1} — Ver / Descargar
-                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ marginLeft: 'auto' }}><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ marginLeft: 'auto' }}><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /><polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" /></svg>
                       </a>
                     ))
                   )}

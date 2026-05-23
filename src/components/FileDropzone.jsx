@@ -3,18 +3,19 @@ import { useDropzone } from 'react-dropzone'
 
 const MAX_SIZE = 20 * 1024 * 1024 // 20MB
 const ACCEPT   = { 'application/pdf': ['.pdf'], 'image/jpeg': ['.jpg','.jpeg'], 'image/png': ['.png'] }
+const MAX_FILES = 6
 
 export function FileDropzone({ value = [], onChange, error }) {
   const [rejected, setRejected] = useState([])
 
   const onDrop = useCallback((accepted, rej) => {
     setRejected(rej.map(r => ({ name: r.file.name, reason: r.errors[0]?.message })))
-    const next = [...value, ...accepted].slice(0, 4)
+    const next = [...value, ...accepted].slice(0, MAX_FILES)
     onChange(next)
   }, [value, onChange])
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
-    onDrop, accept: ACCEPT, maxSize: MAX_SIZE, maxFiles: 4 - value.length,
+    onDrop, accept: ACCEPT, maxSize: MAX_SIZE, maxFiles: MAX_FILES - value.length,
   })
 
   const remove = (i) => onChange(value.filter((_, idx) => idx !== i))
@@ -45,7 +46,7 @@ export function FileDropzone({ value = [], onChange, error }) {
         <p style={{ fontSize: 13, fontWeight: 500, color: isDragActive ? 'var(--red)' : 'var(--text-2)', marginBottom: 4 }}>
           {isDragActive ? 'Suelta aquí' : 'Arrastra archivos o haz clic para seleccionar'}
         </p>
-        <p style={{ fontSize: 11, color: 'var(--text-3)' }}>PDF, JPG, PNG · Máximo 20MB por archivo · Hasta 4 archivos</p>
+        <p style={{ fontSize: 11, color: 'var(--text-3)' }}>PDF, JPG, PNG · Máximo 20MB por archivo · Hasta {MAX_FILES} archivos</p>
       </div>
 
       {error && (

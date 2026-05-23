@@ -93,12 +93,12 @@ export function Button({ children, variant = 'primary', loading, icon, style: s,
   const base = {
     display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
     gap: 8, padding: '10px 20px', borderRadius: 'var(--radius)',
-    fontSize: 13, fontWeight: 600, letterSpacing: '.02em',
+    fontSize: 15, fontWeight: 600, letterSpacing: '.02em',
     border: 'none', cursor: props.disabled || loading ? 'not-allowed' : 'pointer',
     transition: 'all .15s', userSelect: 'none',
   }
   const variants = {
-    primary:   { background: 'var(--red)',    color: '#fff', opacity: (props.disabled || loading) ? .6 : 1 },
+    primary:   { background: 'var(--lblue)',    color: '#fff', opacity: (props.disabled || loading) ? .6 : 1 },
     secondary: { background: 'var(--surface)', color: 'var(--text-2)', border: '1px solid var(--border)' },
     ghost:     { background: 'transparent',   color: 'var(--red)', border: '1px solid var(--red)' },
     danger:    { background: '#fee2e2',        color: '#b91c1c', border: '1px solid #fca5a5' },
@@ -199,11 +199,11 @@ export function RadioGroup({ name, value, onChange, options }) {
   return (
     <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
       {options.map(opt => (
-        <label key={opt.value} style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer', padding: '8px 14px', borderRadius: 'var(--radius)', border: `1px solid ${value === opt.value ? 'var(--red)' : 'var(--border)'}`, background: value === opt.value ? 'var(--red-light)' : 'var(--surface)', transition: 'all .15s', userSelect: 'none' }}>
-          <input type="radio" name={name} value={opt.value} checked={value === opt.value} onChange={() => onChange(opt.value)} style={{ accentColor: 'var(--red)' }} />
-          <span style={{ fontSize: 13, fontWeight: 500, color: value === opt.value ? 'var(--red)' : 'var(--text-2)' }}>{opt.label}</span>
+        <label key={opt.value} style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer', padding: '8px 14px', borderRadius: 'var(--radius)', border: `1px solid ${value === opt.value ? 'var(--lblue)' : 'var(--border)'}`, background: value === opt.value ? '#1485cc06' : 'var(--surface)', transition: 'all .15s', userSelect: 'none' }}>
+          <input type="radio" name={name} value={opt.value} checked={value === opt.value} onChange={() => onChange(opt.value)} style={{ accentColor: '#1485cc' }} />
+          <span style={{ fontSize: 13, fontWeight: 500, color: value === opt.value ? 'var(--lblue)' : 'var(--text-2)' }}>{opt.label}</span>
         </label>
-      ))}
+      ))} 
     </div>
   )
 }

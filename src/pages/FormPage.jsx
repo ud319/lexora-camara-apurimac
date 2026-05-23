@@ -9,6 +9,7 @@ import { toast } from '../components/ui'
 import { useAuth } from '../context/AuthContext'
 import { demandadoSchema } from '../lib/schemas'
 import { obtenerNumeroExpediente, insertarSolicitud, subirArchivo } from '../lib/supabase'
+import { MainHeader } from '../components/MainHeader'
 
 const TIPOS_SOLICITUD = [
   {
@@ -146,7 +147,8 @@ export default function FormPage() {
 
   return (
     <>
-      <header style={{ background: 'var(--red)', color: '#fff', height: 54, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 1.5rem' }}>
+      <MainHeader />
+      <header style={{ background: 'var(--lblue)', color: '#fff', height: 54, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 1.5rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
           <span style={{ fontSize: 14, fontWeight: 700 }}>Nueva Solicitud</span>
@@ -168,7 +170,7 @@ export default function FormPage() {
           <Card style={{ padding: '2rem' }}>
             {/* Título panel */}
             <div style={{ marginBottom: 24, paddingBottom: 16, borderBottom: '1px solid var(--border)', display: 'flex', alignItems: 'center', gap: 10 }}>
-              <div style={{ width: 32, height: 32, borderRadius: 'var(--radius)', background: 'var(--red-light)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--red)' }}>
+              <div style={{ width: 32, height: 32, borderRadius: 'var(--radius)', background: '#009dff3e', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--lblue)' }}>
                 {step === 0 && <DocIcon />}
                 {step === 1 && <UserIcon />}
                 {step === 2 && <UserIcon />}
@@ -176,7 +178,7 @@ export default function FormPage() {
               </div>
               <div>
                 <h2 style={{ fontSize: 15, fontWeight: 700 }}>{panelTitles[step]?.title}</h2>
-                <p style={{ fontSize: 12, color: 'var(--text-3)', marginTop: 1 }}>{panelTitles[step]?.sub}</p>
+                <p style={{ fontSize: 14, color: 'var(--text-3)', marginTop: 1 }}>{panelTitles[step]?.sub}</p>
               </div>
             </div>
 
@@ -191,18 +193,18 @@ export default function FormPage() {
                       style={{
                         display: 'flex', alignItems: 'center', gap: 16,
                         padding: '18px 20px',
-                        border: `2px solid ${tipoSolicitud === tipo.value ? 'var(--red)' : 'var(--border)'}`,
+                        border: `2px solid ${tipoSolicitud === tipo.value ? 'var(--lblue)' : 'var(--border)'}`,
                         borderRadius: 'var(--radius-lg)',
-                        background: tipoSolicitud === tipo.value ? 'var(--red-light)' : 'var(--surface)',
+                        background: tipoSolicitud === tipo.value ? '#009dff07' : 'var(--surface)',
                         cursor: 'pointer', textAlign: 'left', transition: 'all .15s',
-                        color: tipoSolicitud === tipo.value ? 'var(--red)' : 'var(--text)',
+                        color: tipoSolicitud === tipo.value ? 'var(--lblue)' : 'var(--text)',
                       }}
                     >
                       {/* Indicador selección */}
                       <div style={{
                         width: 20, height: 20, borderRadius: '50%', flexShrink: 0,
-                        border: `2px solid ${tipoSolicitud === tipo.value ? 'var(--red)' : 'var(--border-2)'}`,
-                        background: tipoSolicitud === tipo.value ? 'var(--red)' : 'transparent',
+                        border: `2px solid ${tipoSolicitud === tipo.value ? 'var(--lblue)' : 'var(--border-2)'}`,
+                        background: tipoSolicitud === tipo.value ? 'var(--lblue)' : 'transparent',
                         display: 'flex', alignItems: 'center', justifyContent: 'center',
                         transition: 'all .15s',
                       }}>
@@ -213,17 +215,17 @@ export default function FormPage() {
                       {/* Icono */}
                       <div style={{
                         width: 44, height: 44, borderRadius: 'var(--radius)',
-                        background: tipoSolicitud === tipo.value ? 'rgba(196,30,58,.12)' : '#f4f4f5',
+                        background: tipoSolicitud === tipo.value ? '#009dff3e' : '#f4f4f5',
                         display: 'flex', alignItems: 'center', justifyContent: 'center',
                         flexShrink: 0, transition: 'all .15s',
-                        color: tipoSolicitud === tipo.value ? 'var(--red)' : 'var(--text-3)',
+                        color: tipoSolicitud === tipo.value ? 'var(--lblue)' : 'var(--text-3)',
                       }}>
                         {tipo.icon}
                       </div>
                       {/* Texto */}
                       <div>
                         <p style={{ fontSize: 14, fontWeight: 600, marginBottom: 2 }}>{tipo.label}</p>
-                        <p style={{ fontSize: 12, color: tipoSolicitud === tipo.value ? 'var(--red)' : 'var(--text-3)', opacity: .85 }}>{tipo.descripcion}</p>
+                        <p style={{ fontSize: 12, color: tipoSolicitud === tipo.value ? 'var(--lblue)' : 'var(--text-3)', opacity: .85 }}>{tipo.descripcion}</p>
                       </div>
                     </button>
                   ))}

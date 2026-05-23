@@ -1,33 +1,43 @@
+import { useEffect } from 'react';
 import { useForm, Controller } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { demandanteSchema, docLimits } from '../lib/schemas'
 import { Input, Select, Button, RadioGroup } from './ui'
 
 const DOC_OPTIONS = [
-  { value: 'DNI',       label: 'DNI' },
-  { value: 'CE',        label: 'Carnet de Extranjería' },
+  { value: 'DNI', label: 'DNI' },
+  { value: 'CE', label: 'Carnet de Extranjería' },
   { value: 'PASAPORTE', label: 'Pasaporte' },
-  { value: 'RUC',       label: 'RUC (Persona Jurídica)' },
+  { value: 'RUC', label: 'RUC (Persona Jurídica)' },
 ]
 
 export function PersonaForm({ title, schema, defaultValues, onSubmit, onBack, submitLabel = 'Continuar' }) {
-  const { register, handleSubmit, watch, control, formState: { errors, isSubmitting } } = useForm({
+  const { register, handleSubmit, watch, setValue, control, formState: { errors, isSubmitting } } = useForm({
     resolver: zodResolver(schema),
     defaultValues: defaultValues || {
       tipo_persona: 'natural',
-      tipo_doc: '',
+      tipo_doc: 'DNI',
       num_doc: '',
       nombres: '',
       razon_social: '',
-      celular: '',
+      // celular: '',
       domicilio: '',
       correo: '',
     },
   })
 
   const tipoPersona = watch('tipo_persona')
-  const tipoDoc     = watch('tipo_doc')
-  const maxLen      = docLimits[tipoDoc] || 12
+  const tipoDoc = watch('tipo_doc')
+  const maxLen = docLimits[tipoDoc] || 12
+
+  useEffect(() => {
+    if (tipoPersona === 'natural') {
+      setValue('tipo_doc', 'DNI')
+    }
+    if (tipoPersona === 'juridica') {
+      setValue('tipo_doc', 'RUC')
+    }
+  }, [tipoPersona, setValue])
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate>
@@ -43,7 +53,7 @@ export function PersonaForm({ title, schema, defaultValues, onSubmit, onBack, su
               value={field.value}
               onChange={field.onChange}
               options={[
-                { value: 'natural',  label: 'Persona Natural' },
+                { value: 'natural', label: 'Persona Natural' },
                 { value: 'juridica', label: 'Persona Jurídica' },
               ]}
             />
@@ -58,6 +68,7 @@ export function PersonaForm({ title, schema, defaultValues, onSubmit, onBack, su
           required
           error={errors.tipo_doc?.message}
           {...register('tipo_doc')}
+
         >
           <option value="">Elegir</option>
           {DOC_OPTIONS.map(o => (
@@ -69,7 +80,7 @@ export function PersonaForm({ title, schema, defaultValues, onSubmit, onBack, su
         <Input
           label="Número de documento"
           required
-          placeholder={tipoDoc === 'RUC' ? '20123456789' : '12345678'}
+          placeholder={tipoDoc === 'RUC' ? '20123456789' : 'Ingrese número de D.N.I Ejemplo: 78945612'}
           maxLength={maxLen}
           counter
           error={errors.num_doc?.message}
@@ -84,27 +95,29 @@ export function PersonaForm({ title, schema, defaultValues, onSubmit, onBack, su
 
         {/* Nombres / Razón social */}
         {tipoPersona === 'natural' ? (
-          <Input
-            label="Nombres y apellidos"
-            required
-            placeholder="Nombres y Apellidos"
-            error={errors.nombres?.message}
-            style={{ gridColumn: '1 / 2' }}
-            {...register('nombres')}
-          />
+          <div style={{ gridColumn: '1 / -1' }}>
+            <Input
+              label="Nombres y apellidos"
+              required
+              placeholder="Nombres y Apellidos"
+              error={errors.nombres?.message}
+              {...register('nombres')}
+            />
+          </div>
         ) : (
-          <Input
-            label="Razón social"
-            required
-            placeholder="Razón Social"
-            error={errors.razon_social?.message}
-            style={{ gridColumn: '1 / 2' }}
-            {...register('razon_social')}
-          />
+          <div style={{ gridColumn: '1 / -1' }}>
+            <Input
+              label="Razón social"
+              required
+              placeholder="Razón Social"
+              error={errors.razon_social?.message}
+              {...register('razon_social')}
+            />
+          </div>
         )}
 
         {/* Celular */}
-        <Input
+        {/* <Input
           label="Celular"
           required
           type="tel"
@@ -113,7 +126,7 @@ export function PersonaForm({ title, schema, defaultValues, onSubmit, onBack, su
           error={errors.celular?.message}
           onInput={e => { e.target.value = e.target.value.replace(/\D/g, '') }}
           {...register('celular')}
-        />
+        /> */}
 
         {/* Domicilio */}
         <div style={{ gridColumn: '1 / -1' }}>
@@ -144,7 +157,7 @@ export function PersonaForm({ title, schema, defaultValues, onSubmit, onBack, su
         ) : <span />}
         <Button type="submit" loading={isSubmitting}>
           {submitLabel}
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="9 18 15 12 9 6" /></svg>
         </Button>
       </div>
     </form>
