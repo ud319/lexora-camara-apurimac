@@ -70,10 +70,10 @@ export default function DashboardCliente() {
       {/* Header */}
       <header style={{ background: 'var(--lblue)', color: '#fff', height: 58, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 1.5rem', boxShadow: '0 2px 12px rgba(196,30,58,.25)' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 15 }}>
-          <a className="nav-link" href="https://camara-apurimac.com.pe/wp-content/uploads/2026/05/GUIA-DE-USUARIO-SIMPLE-CEAR-2.pdf" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none', color: '#fff' }} >
+          <a className="nav-link" href="https://camara-apurimac.com.pe/wp-content/uploads/2026/05/GUIA-DE-USUARIO-SIMPLE-CEAR-2.pdf" target="_blank" rel="noopener noreferrer" style={{ background: 'rgba(255,255,255,.15)', border: '1px solid rgba(255,255,255,.3)', color: '#fff', padding: '5px 12px', borderRadius: 6, fontSize: 14, textDecoration: 'none' }} >
             <span style={{ fontSize: 14, fontWeight: 700 }}>Guía de usuario</span>
           </a>
-          <a className="nav-link" href="https://camara-apurimac.com.pe/wp-content/uploads/2026/05/MANUAL-DE-USUARIO-MESA-DE-PARTES-VIRTUAL-CEAR.pdf" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none', color: '#fff' }} >
+          <a className="nav-link" href="https://camara-apurimac.com.pe/wp-content/uploads/2026/05/MANUAL-DE-USUARIO-MESA-DE-PARTES-VIRTUAL-CEAR.pdf" target="_blank" rel="noopener noreferrer" style={{ background: 'rgba(255,255,255,.15)', border: '1px solid rgba(255,255,255,.3)', color: '#fff', padding: '5px 12px', borderRadius: 6, fontSize: 14, textDecoration: 'none' }} >
             <span style={{ fontSize: 14, fontWeight: 700 }}>Manual de usuario</span>
           </a>
         </div>
