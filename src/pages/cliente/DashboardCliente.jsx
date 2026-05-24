@@ -70,18 +70,18 @@ export default function DashboardCliente() {
       {/* Header */}
       <header style={{ background: 'var(--lblue)', color: '#fff', height: 58, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 1.5rem', boxShadow: '0 2px 12px rgba(196,30,58,.25)' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 15 }}>
-          <Link className="nav-link" to="/dashboard" style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none', color: '#fff' }} >
-            <span style={{ fontSize: 14, fontWeight: 700 }}>Mi cuenta</span>
-          </Link>
-          <Link className="nav-link" href="https://www.camara-apurimac.com.pe" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none', color: '#fff' }} >
+          <a className="nav-link" href="https://camara-apurimac.com.pe/wp-content/uploads/2026/05/GUIA-DE-USUARIO-SIMPLE-CEAR-2.pdf" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none', color: '#fff' }} >
             <span style={{ fontSize: 14, fontWeight: 700 }}>Guía de usuario</span>
-          </Link>
+          </a>
+          <a className="nav-link" href="https://camara-apurimac.com.pe/wp-content/uploads/2026/05/MANUAL-DE-USUARIO-MESA-DE-PARTES-VIRTUAL-CEAR.pdf" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none', color: '#fff' }} >
+            <span style={{ fontSize: 14, fontWeight: 700 }}>Manual de usuario</span>
+          </a>
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 15 }}>
           <div style={{ textAlign: 'right' }}>
             <p style={{ fontSize: 14, fontWeight: 600, textTransform: 'uppercase' }}>{cliente?.nombres}</p>
-            <p style={{ fontSize: 12, opacity: .75 }}>{cliente?.tipo_doc} {cliente?.documento}</p>
+            <p style={{ fontSize: 12, fontWeight: 500, opacity: .75 }}>{cliente?.tipo_doc}: {cliente?.documento}</p>
           </div>
           <Link to="/perfil" style={{ background: 'rgba(255,255,255,.15)', border: '1px solid rgba(255,255,255,.3)', color: '#fff', padding: '5px 12px', borderRadius: 6, fontSize: 14, textDecoration: 'none' }}>
             Editar perfil

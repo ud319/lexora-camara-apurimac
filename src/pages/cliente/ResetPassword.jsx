@@ -3,7 +3,7 @@ import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
 import { Input, Button, Card } from '../../components/ui'
 import { toast } from '../../components/ui'
-
+import logo_cca from '../../assets/img/Logo-cca.png'
 export default function ResetPassword() {
   const { resetPassword } = useAuth()
   const navigate = useNavigate()
@@ -48,10 +48,8 @@ export default function ResetPassword() {
     <div style={{ minHeight: '100vh', background: 'var(--bg)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '1rem' }}>
 
       <div style={{ textAlign: 'center', marginBottom: 24 }}>
-        <div style={{ width: 48, height: 48, background: 'var(--red)', borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 10px' }}>
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round">
-            <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-          </svg>
+        <div style={{ width: 92, height: 92,  borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 10px' }}>
+          <img src={logo_cca} alt="Logo" style={{ width: '70%', height: '70%', objectFit: 'contain' }} />
         </div>
         <h1 style={{ fontSize: 18, fontWeight: 700 }}>Nueva contraseña</h1>
         <p style={{ fontSize: 12, color: 'var(--text-3)', marginTop: 3 }}>Mesa de Partes Virtual</p>

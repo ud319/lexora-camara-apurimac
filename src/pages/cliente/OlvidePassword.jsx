@@ -4,7 +4,7 @@ import { useAuth } from '../../context/AuthContext'
 import { Input, Button, Card } from '../../components/ui'
 import { toast } from '../../components/ui'
 import { supabase } from '../../lib/supabase'
-
+import logo_cca from '../../assets/img/Logo-cca.png'
 export default function OlvidePassword() {
   const { solicitarResetPassword } = useAuth()
   const [correo, setCorreo] = useState('')
@@ -44,10 +44,8 @@ export default function OlvidePassword() {
     <div style={{ minHeight: '100vh', background: 'var(--bg)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '1rem' }}>
 
       <div style={{ textAlign: 'center', marginBottom: 24 }}>
-        <div style={{ width: 48, height: 48, background: 'var(--red)', borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 10px' }}>
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round">
-            <rect x="3" y="11" width="18" height="11" rx="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" />
-          </svg>
+        <div style={{ width: 92, height: 92,  borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 10px' }}>
+          <img src={logo_cca} alt="Logo" style={{ width: '70%', height: '70%', objectFit: 'contain' }} />
         </div>
         <h1 style={{ fontSize: 18, fontWeight: 700 }}>Recuperar contraseña</h1>
         <p style={{ fontSize: 12, color: 'var(--text-3)', marginTop: 3 }}>Mesa de Partes Virtual</p>
@@ -81,7 +79,7 @@ export default function OlvidePassword() {
             </div>
             <h3 style={{ fontSize: 15, fontWeight: 700, marginBottom: 8 }}>¡Enlace generado!</h3>
             <p style={{ fontSize: 13, color: 'var(--text-2)', marginBottom: 16, lineHeight: 1.6 }}>
-              En producción, el enlace se enviaría al correo <strong>{correo}</strong>.
+              Se ha enviado un enlace para cambiar su contraseña, revise su correo <strong>{correo}</strong>.
             </p>
 
             {/* Mostrar link en desarrollo */}
@@ -92,11 +90,11 @@ export default function OlvidePassword() {
               <a href={link} style={{ fontSize: 11, color: 'var(--blue)', wordBreak: 'break-all', fontFamily: 'var(--mono)' }}>{link}</a>
             </div> */}
 
-            <Link to={link} style={{ textDecoration: 'none' }}>
+            {/* <Link to={link} style={{ textDecoration: 'none' }}>
               <Button style={{ width: '100%', justifyContent: 'center', marginBottom: 10 }}>
                 Ir a restablecer contraseña →
               </Button>
-            </Link>
+            </Link> */}
           </div>
         )}
 

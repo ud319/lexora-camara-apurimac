@@ -34,67 +34,77 @@ export default function LoginCliente() {
   return (
     <>
       <MainHeader />
-
-    <div style={{ minHeight: '100vh', background: 'var(--bg)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '1rem' }}>
-      {/* Logo */}
-    
-      <div style={{ textAlign: 'center', marginBottom: 28 }}>
-        <div style={{ width: 92, height: 92, borderRadius: 14, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 12px' }}>
-          <img src={logo_cca} alt="Logo" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+      <header style={{ background: 'var(--lblue)', color: '#fff', height: 58, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 1.5rem', boxShadow: '0 2px 12px rgba(196,30,58,.25)' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 15 }}>
+          <a className="nav-link" href="https://camara-apurimac.com.pe/wp-content/uploads/2026/05/GUIA-DE-USUARIO-SIMPLE-CEAR-2.pdf" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none', color: '#fff' }} >
+            <span style={{ fontSize: 14, fontWeight: 700 }}>Guía de usuario</span>
+          </a>
+          <a className="nav-link" href="https://camara-apurimac.com.pe/wp-content/uploads/2026/05/MANUAL-DE-USUARIO-MESA-DE-PARTES-VIRTUAL-CEAR.pdf" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none', color: '#fff' }} >
+            <span style={{ fontSize: 14, fontWeight: 700 }}>Manual de usuario</span>
+          </a>
         </div>
-        <h1 style={{ fontSize: 20, fontWeight: 700 }}>CEAR – APURÍMAC </h1>
-        <h2 style={{ fontSize: 16, fontWeight: 500, marginTop: 4 }}>Para presentar solicitudes y/o realizar seguimiento de expediente.</h2>
-        <p style={{ fontSize: 12, fontWeight: 'normal', marginTop: 4, color: 'blue' }}>
-          <a style={{ textDecoration: 'none'}} href="https://www.camara-apurimac.com.pe" target="_blank" rel="noopener noreferrer">camara-apurimac.com.pe</a>
-        </p>
-        <p style={{ fontSize: 13, color: 'var(--text-3)', marginTop: 4 }}>Acceso para ciudadanos</p>
-      </div>
 
-      <Card style={{ width: '100%', maxWidth: 400, padding: '2rem' }}>
-        <h2 style={{ fontSize: 17, fontWeight: 700, marginBottom: 20 }}>Iniciar sesión</h2>
+      </header>
+      <div style={{ minHeight: '80vh', background: 'var(--bg)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '1rem' }}>
+        {/* Logo */}
 
-        <form onSubmit={handleSubmit} noValidate style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-          <Input
-            label="DNI o RUC"
-            placeholder="Ingrese su número de documento"
-            value={documento}
-            onChange={e => { setDocumento(e.target.value.replace(/\D/g, '')); setErrors(x => ({ ...x, documento: null })) }}
-            maxLength={11}
-            error={errors.documento}
-          />
-          <Input
-            label="Contraseña"
-            type="password"
-            placeholder="••••••••"
-            value={password}
-            onChange={e => { setPassword(e.target.value); setErrors(x => ({ ...x, password: null })) }}
-            error={errors.password}
-          />
-
-          <Button type="submit" loading={loading} style={{ marginTop: 4, width: '100%', justifyContent: 'center', padding: '11px' }}>
-            Ingresar
-          </Button>
-        </form>
-
-        <div style={{ marginTop: 20, paddingTop: 16, borderTop: '1px solid var(--border)', display: 'flex', flexDirection: 'column', gap: 10, alignItems: 'center' }}>
-          <Link to="/olvide-password" style={{ fontSize: 13, color: 'var(--lblue)', textDecoration: 'none', fontWeight: 500 }}>
-            ¿Olvidaste tu contraseña?
-          </Link>
-          <p style={{ fontSize: 13, color: 'var(--text-3)' }}>
-            ¿No tienes cuenta?{' '}
-            <Link to="/registro" style={{ color: 'var(--lblue)', fontWeight: 600, textDecoration: 'none' }}>
-              Regístrate aquí
-            </Link>
+        <div style={{ textAlign: 'center', marginBottom: 28 }}>
+          <div style={{ width: 92, height: 92, borderRadius: 14, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 12px' }}>
+            <img src={logo_cca} alt="Logo" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+          </div>
+          <h1 style={{ fontSize: 20, fontWeight: 700 }}>CEAR – APURÍMAC </h1>
+          <h2 style={{ fontSize: 16, fontWeight: 500, marginTop: 4 }}>Para presentar solicitudes y/o realizar seguimiento de expediente.</h2>
+          <p style={{ fontSize: 12, fontWeight: 'normal', marginTop: 4, color: 'blue' }}>
+            <a style={{ textDecoration: 'none' }} href="https://www.camara-apurimac.com.pe" target="_blank" rel="noopener noreferrer">camara-apurimac.com.pe</a>
           </p>
+          <p style={{ fontSize: 13, color: 'var(--text-3)', marginTop: 4 }}>Acceso para ciudadanos</p>
         </div>
-      </Card>
 
-      <div style={{ marginTop: 16 }}>
-        <Link to="/admin/login" style={{ fontSize: 12, color: 'var(--text-3)', textDecoration: 'none' }}>
-          Acceso administradores →
-        </Link>
+        <Card style={{ width: '100%', maxWidth: 400, padding: '2rem' }}>
+          <h2 style={{ fontSize: 17, fontWeight: 700, marginBottom: 20 }}>Iniciar sesión</h2>
+
+          <form onSubmit={handleSubmit} noValidate style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+            <Input
+              label="DNI o RUC"
+              placeholder="Ingrese su número de documento"
+              value={documento}
+              onChange={e => { setDocumento(e.target.value.replace(/\D/g, '')); setErrors(x => ({ ...x, documento: null })) }}
+              maxLength={11}
+              error={errors.documento}
+            />
+            <Input
+              label="Contraseña"
+              type="password"
+              placeholder="••••••••"
+              value={password}
+              onChange={e => { setPassword(e.target.value); setErrors(x => ({ ...x, password: null })) }}
+              error={errors.password}
+            />
+
+            <Button type="submit" loading={loading} style={{ marginTop: 4, width: '100%', justifyContent: 'center', padding: '11px' }}>
+              Ingresar
+            </Button>
+          </form>
+
+          <div style={{ marginTop: 20, paddingTop: 16, borderTop: '1px solid var(--border)', display: 'flex', flexDirection: 'column', gap: 10, alignItems: 'center' }}>
+            <Link to="/olvide-password" style={{ fontSize: 13, color: 'var(--lblue)', textDecoration: 'none', fontWeight: 500 }}>
+              ¿Olvidaste tu contraseña?
+            </Link>
+            <p style={{ fontSize: 13, color: 'var(--text-3)' }}>
+              ¿No tienes cuenta?{' '}
+              <Link to="/registro" style={{ color: 'var(--lblue)', fontWeight: 600, textDecoration: 'none' }}>
+                Regístrate aquí
+              </Link>
+            </p>
+          </div>
+        </Card>
+
+        <div style={{ marginTop: 16 }}>
+          <Link to="/admin/login" style={{ fontSize: 12, color: 'var(--text-3)', textDecoration: 'none' }}>
+            Acceso administradores →
+          </Link>
+        </div>
       </div>
-    </div>
-        </>
+    </>
   )
 }

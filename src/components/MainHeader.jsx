@@ -1,3 +1,9 @@
+import {
+  IconBrandYoutube,
+  IconBrandLinkedin,
+  IconBrandFacebook,
+  IconBrandWhatsapp
+} from '@tabler/icons-react';
 import logo_cca from '../assets/img/Logo-cca.png'
 export function MainHeader() {
     return (
@@ -20,18 +26,18 @@ export function MainHeader() {
                         <h3 style={{ textTransform: 'uppercase' }} className="center-label">Mesa de Partes Virtual</h3>
                         <span className="center-tagline">Trazabilidad Documental</span>
                     </div>
-                    <div className="col-social">
+                    <div className="col-social" style={{ color: 'white', display: 'flex', flexDirection: 'row', justifyContent: 'flex-end', gap: 12, justifySelf: 'end' }}>
                         <a className="social-icon" href="#" aria-label="YouTube">
-                            <i className="ti ti-brand-youtube"></i>
+                            <IconBrandYoutube size={24} stroke={1.8} />
                         </a>
                         <a className="social-icon" href="#" aria-label="LinkedIn">
-                            <i className="ti ti-brand-linkedin"></i>
+                            <IconBrandLinkedin size={24} stroke={1.8} />
                         </a>
                         <a className="social-icon" href="#" aria-label="Facebook">
-                            <i className="ti ti-brand-facebook"></i>
+                            <IconBrandFacebook size={24} stroke={1.8} />
                         </a>
                         <a className="social-icon" href="#" aria-label="WhatsApp">
-                            <i className="ti ti-brand-whatsapp"></i>
+                           <IconBrandWhatsapp size={24} stroke={1.8} />
                         </a>
                     </div>
                 </div>

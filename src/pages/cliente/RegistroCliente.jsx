@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
 import { Button, Input, Select, Card, RadioGroup } from '../../components/ui'
 import { toast } from '../../components/ui'
+import logo_cca from '../../assets/img/Logo-cca.png'
 
 const DOC_LIMITS = { DNI: 8, RUC: 11, CE: 12, PASAPORTE: 12 }
 
@@ -33,7 +34,7 @@ export default function RegistroCliente() {
     if (!form.nombres.trim())                     e.nombres   = 'Este campo es obligatorio'
     if (!form.celular || form.celular.length !== 9) e.celular = 'El celular debe tener 9 dígitos'
     if (!form.direccion.trim())                   e.direccion = 'Ingrese su dirección'
-    if (form.correo && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.correo)) e.correo = 'Correo inválido'
+    if (!form.correo && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.correo)) e.correo = 'Correo inválido'
     if (!form.password || form.password.length < 6) e.password = 'Mínimo 6 caracteres'
     if (form.password !== form.confirmar)         e.confirmar = 'Las contraseñas no coinciden'
     setErrors(e)
@@ -69,11 +70,8 @@ export default function RegistroCliente() {
     <div style={{ minHeight: '100vh', background: 'var(--bg)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '1.5rem 1rem' }}>
 
       <div style={{ textAlign: 'center', marginBottom: 24 }}>
-        <div style={{ width: 48, height: 48, background: 'var(--red)', borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 10px' }}>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-            <polyline points="14 2 14 8 20 8"/>
-          </svg>
+        <div style={{ width: 92, height: 92,  borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 10px' }}>
+          <img src={logo_cca} alt="Logo" style={{ width: '70%', height: '70%', objectFit: 'contain' }} />
         </div>
         <h1 style={{ fontSize: 18, fontWeight: 700 }}>Mesa de Partes Virtual</h1>
         <p style={{ fontSize: 12, color: 'var(--text-3)', marginTop: 3 }}>Crear nueva cuenta</p>
@@ -145,6 +143,7 @@ export default function RegistroCliente() {
             {/* Correo */}
             <Input
               label="Correo electrónico"
+              required
               type="email"
               placeholder="ejemplo@correo.com"
               value={form.correo}
@@ -193,7 +192,7 @@ export default function RegistroCliente() {
         <div style={{ marginTop: 18, paddingTop: 14, borderTop: '1px solid var(--border)', textAlign: 'center' }}>
           <p style={{ fontSize: 13, color: 'var(--text-3)' }}>
             ¿Ya tienes cuenta?{' '}
-            <Link to="/login" style={{ color: 'var(--red)', fontWeight: 600, textDecoration: 'none' }}>Iniciar sesión</Link>
+            <Link to="/login" style={{ color: 'var(--lblue)', fontWeight: 600, textDecoration: 'none' }}>Iniciar sesión</Link>
           </p>
         </div>
       </Card>
